@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import juloo.cdict.Cdict;
@@ -206,6 +207,15 @@ public final class Config
     float screen_width_dp = dm.widthPixels / dm.density;
     wide_screen = screen_width_dp >= WIDE_DEVICE_THRESHOLD;
     split_layout = get_split_layout();
+    show_numpad = false;
+    add_number_row = false;
+    suggestions_enabled = false;
+    suggestions_add_space = false;
+    autocapitalisation = false;
+    space_bar_auto_complete = false;
+    extra_keys_param = Collections.emptyMap();
+    extra_keys_custom = Collections.emptyMap();
+    split_layout = false;
   }
 
   public int get_current_layout()

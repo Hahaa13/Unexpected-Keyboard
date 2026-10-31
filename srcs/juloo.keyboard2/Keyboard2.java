@@ -29,7 +29,6 @@ import juloo.cdict.Cdict;
 import juloo.keyboard2.dict.Dictionaries;
 import juloo.keyboard2.dict.DictionariesActivity;
 import juloo.keyboard2.dict.DictionarySwitcher;
-import juloo.keyboard2.prefs.LayoutsPreference;
 import juloo.keyboard2.suggestions.CandidatesView;
 import juloo.keyboard2.suggestions.Suggestions;
 
@@ -61,15 +60,7 @@ public class Keyboard2 extends InputMethodService
   {
     if (_currentSpecialLayout != null)
       return _currentSpecialLayout;
-    KeyboardData layout = null;
-    int layout_i = _config.get_current_layout();
-    if (layout_i >= _config.layouts.size())
-      layout_i = 0;
-    if (layout_i < _config.layouts.size())
-      layout = _config.layouts.get(layout_i);
-    if (layout == null)
-      layout = _localeTextLayout;
-    return layout;
+    return _localeTextLayout;
   }
 
   /** Layout currently visible. */
@@ -173,18 +164,9 @@ public class Keyboard2 extends InputMethodService
   private void refreshSubtypeImm()
   {
     _config.shouldOfferVoiceTyping = true;
-    KeyboardData default_layout = null;
     _config.device_locales = DeviceLocales.load(this);
-    if (_config.device_locales.default_ != null)
-    {
-      String layout_name = _config.device_locales.default_.default_layout;
-      if (layout_name != null)
-        default_layout = LayoutsPreference.layout_of_string(getResources(), layout_name);
-    }
-    _config.extra_keys_subtype = _config.device_locales.extra_keys();
-    if (default_layout == null)
-      default_layout = loadLayout(R.xml.latn_qwerty_us);
-    _localeTextLayout = default_layout;
+    _config.extra_keys_subtype = null;
+    _localeTextLayout = loadLayout(R.xml.my_keyboard_text);
   }
 
   private void refresh_current_dictionary()
