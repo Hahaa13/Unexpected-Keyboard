@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard bottom_row="false">
+  <row>
+    <key width="2.5" role="action" key0="f1"/>
+    <key width="2.5" role="action" key0="f2"/>
+    <key width="2.5" role="action" key0="f3"/>
+    <key width="2.5" role="action" key0="f4"/>
+  </row>
+  <row>
+    <key width="2.5" role="action" key0="f5"/>
+    <key width="2.5" role="action" key0="f6"/>
+    <key width="2.5" role="action" key0="f7"/>
+    <key width="2.5" role="action" key0="f8"/>
+  </row>
+  <row>
+    <key width="2.5" role="action" key0="f9"/>
+    <key width="2.5" role="action" key0="f10"/>
+    <key width="2.5" role="action" key0="f11"/>
+    <key width="2.5" role="action" key0="f12"/>
+  </row>
+  <row height="0.95">
+    <key width="2" role="action" key0="switch_text"/>
+    <key width="2" role="action" key0="switch_utils_numpad"/>
+    <key width="2" role="action" key0="switch_utils_special"/>
+    <key width="1.5" role="action" key0="space"/>
+    <key width="2.5" role="action" key0="enter"/>
+  </row>
+</keyboard>

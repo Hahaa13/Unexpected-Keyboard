@@ -43,6 +43,11 @@ public class Keyboard2 extends InputMethodService
   private KeyEventHandler _keyeventhandler;
   /** If not 'null', the layout to use instead of [_config.current_layout]. */
   private KeyboardData _currentSpecialLayout;
+  private static final int UTILS_NONE = 0;
+  private static final int UTILS_NUMPAD = 1;
+  private static final int UTILS_SPECIAL = 2;
+  private static final int UTILS_FKEYS = 3;
+  private int _utils_page = UTILS_NONE;
   /** Layout associated with the currently selected locale. Not 'null'. */
   private KeyboardData _localeTextLayout;
   /** Installed and current locales. */
@@ -76,6 +81,7 @@ public class Keyboard2 extends InputMethodService
   {
     _config.set_current_layout(l);
     _currentSpecialLayout = null;
+    _utils_page = UTILS_NONE;
     // The active dictionary depends on the current layout.
     refresh_current_dictionary();
     refresh_candidates_view();
@@ -110,6 +116,34 @@ public class Keyboard2 extends InputMethodService
   {
     return loadNumpad(_config.orientation_landscape ?
         R.xml.numeric_landscape : R.xml.numeric);
+  }
+
+  KeyboardData loadUtilsNumpad()
+  {
+    return KeyboardData.load(getResources(), _config.orientation_landscape ?
+        R.xml.my_keyboard_utils_numpad_landscape : R.xml.my_keyboard_utils_numpad);
+  }
+
+  KeyboardData loadUtilsSpecial()
+  {
+    return KeyboardData.load(getResources(), R.xml.my_keyboard_utils_special);
+  }
+
+  KeyboardData loadUtilsFkeys()
+  {
+    return KeyboardData.load(getResources(), R.xml.my_keyboard_utils_fkeys);
+  }
+
+  void setUtilsPage(int page)
+  {
+    _utils_page = page;
+    switch (page)
+    {
+      case UTILS_NUMPAD: setSpecialLayout(loadUtilsNumpad()); break;
+      case UTILS_SPECIAL: setSpecialLayout(loadUtilsSpecial()); break;
+      case UTILS_FKEYS: setSpecialLayout(loadUtilsFkeys()); break;
+      default: setSpecialLayout(null); break;
+    }
   }
 
   KeyboardData loadPinentry(int layout_id)
@@ -247,6 +281,7 @@ public class Keyboard2 extends InputMethodService
   {
     _config.editor_config.refresh(info, getResources());
     refresh_config();
+    _utils_page = UTILS_NONE;
     _currentSpecialLayout = refresh_special_layout();
     _keyboard_layout_view.setKeyboard(current_layout());
     _keyeventhandler.started();
@@ -420,12 +455,35 @@ public class Keyboard2 extends InputMethodService
           break;
 
         case SWITCH_TEXT:
+          _utils_page = UTILS_NONE;
           _currentSpecialLayout = null;
           _keyboard_layout_view.setKeyboard(current_layout());
           break;
 
+        case SWITCH_UTILS:
+          switch (_utils_page)
+          {
+            case UTILS_NUMPAD: setUtilsPage(UTILS_SPECIAL); break;
+            case UTILS_SPECIAL: setUtilsPage(UTILS_FKEYS); break;
+            case UTILS_FKEYS: setUtilsPage(UTILS_NONE); break;
+            default: setUtilsPage(UTILS_NUMPAD); break;
+          }
+          break;
+
+        case SWITCH_UTILS_NUMPAD:
+          setUtilsPage(UTILS_NUMPAD);
+          break;
+
+        case SWITCH_UTILS_SPECIAL:
+          setUtilsPage(UTILS_SPECIAL);
+          break;
+
+        case SWITCH_UTILS_FKEYS:
+          setUtilsPage(UTILS_FKEYS);
+          break;
+
         case SWITCH_NUMERIC:
-          setSpecialLayout(loadNumericLayout());
+          setUtilsPage(UTILS_NUMPAD);
           break;
 
         case SWITCH_EMOJI:
@@ -478,6 +536,7 @@ public class Keyboard2 extends InputMethodService
           break;
 
         case SWITCH_GREEKMATH:
+          _utils_page = UTILS_NONE;
           setSpecialLayout(loadNumpad(R.xml.greekmath));
           break;
 

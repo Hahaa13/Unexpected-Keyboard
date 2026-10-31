@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard bottom_row="false">
+  <row>
+    <key role="action" key0="7"/>
+    <key role="action" key0="8"/>
+    <key role="action" key0="9"/>
+    <key role="action" key0="/"/>
+    <key role="action" key0="backspace"/>
+    <key role="action" key0="f1"/>
+    <key role="action" key0="f2"/>
+    <key role="action" key0="f3"/>
+    <key role="action" key0="f4"/>
+    <key role="action" key0="f5"/>
+  </row>
+  <row>
+    <key role="action" key0="4"/>
+    <key role="action" key0="5"/>
+    <key role="action" key0="6"/>
+    <key role="action" key0="*"/>
+    <key role="action" key0="delete"/>
+    <key role="action" key0="f6"/>
+    <key role="action" key0="f7"/>
+    <key role="action" key0="f8"/>
+    <key role="action" key0="f9"/>
+    <key role="action" key0="f10"/>
+  </row>
+  <row>
+    <key role="action" key0="1"/>
+    <key role="action" key0="2"/>
+    <key role="action" key0="3"/>
+    <key role="action" key0="-"/>
+    <key role="action" key0="tab"/>
+    <key role="action" key0="f11"/>
+    <key role="action" key0="f12"/>
+    <key role="action" key0="up"/>
+    <key role="action" key0="down"/>
+    <key role="action" key0="esc"/>
+  </row>
+  <row height="0.95">
+    <key role="action" key0="0"/>
+    <key role="action" key0="."/>
+    <key role="action" key0="="/>
+    <key role="action" key0="+"/>
+    <key role="action" key0="enter"/>
+    <key role="action" key0="left"/>
+    <key role="action" key0="right"/>
+    <key role="action" key0="home"/>
+    <key role="action" key0="end"/>
+    <key role="action" key0="switch_utils_special"/>
+  </row>
+</keyboard>
