@@ -52,6 +52,7 @@ public class Keyboard2View extends View
 
   private Theme _theme;
   private Theme.Computed _tc;
+  private final Paint _modifier_indicator_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
   private static RectF _tmpRect = new RectF();
 
@@ -384,6 +385,7 @@ public class Keyboard2View extends View
             drawSubLabel(canvas, k.keys[i], x, y, keyW, keyH, i, isKeyDown, tc_key);
         }
         drawIndication(canvas, k, x, y, keyW, keyH, _tc);
+        drawModifierIndicator(canvas, k, x, y, keyW, keyH);
         x += _keyWidth * k.width;
       }
       y += row.height * _tc.row_height;
@@ -497,6 +499,25 @@ public class Keyboard2View extends View
     p.setTextSize(_subLabelSize);
     canvas.drawText(k.indication, 0, k.indication.length(),
         x + keyW / 2f, (keyH - p.ascent() - p.descent()) * 4/5 + y, p);
+  }
+
+  private void drawModifierIndicator(Canvas canvas, KeyboardData.Key k, float x,
+      float y, float keyW, float keyH)
+  {
+    if (k.keys[0] == null || k.keys[0].getKind() != KeyValue.Kind.Modifier)
+      return;
+    int flags = _pointers.getKeyFlags(k.keys[0]);
+    if (flags == -1
+        || (flags & (Pointers.FLAG_P_LATCHED | Pointers.FLAG_P_LOCKED)) == 0)
+      return;
+    boolean locked = (flags & Pointers.FLAG_P_LOCKED) != 0;
+    _modifier_indicator_paint.setColor(locked ? _theme.lockedColor : _theme.activatedColor);
+    float stroke = Math.max(2f, keyH * 0.04f);
+    _modifier_indicator_paint.setStrokeWidth(stroke);
+    float inset = keyW * 0.12f;
+    float lineY = y + keyH - stroke;
+    canvas.drawLine(x + inset, lineY, x + keyW - inset, lineY,
+        _modifier_indicator_paint);
   }
 
   private float scaleTextSize(KeyValue k, boolean main_label)

@@ -75,9 +75,10 @@ public class Keyboard2 extends InputMethodService
   /** Layout currently visible. */
   KeyboardData current_layout()
   {
-    if (_currentSpecialLayout != null)
-      return _currentSpecialLayout;
-    return LayoutModifier.modify_layout(current_layout_unmodified());
+    KeyboardData layout = (_currentSpecialLayout != null)
+      ? _currentSpecialLayout
+      : LayoutModifier.modify_layout(current_layout_unmodified());
+    return LayoutModifier.add_modifier_row(layout);
   }
 
   void setTextLayout(int l)
@@ -99,7 +100,7 @@ public class Keyboard2 extends InputMethodService
   void setSpecialLayout(KeyboardData l)
   {
     _currentSpecialLayout = l;
-    _keyboard_layout_view.setKeyboard(l);
+    _keyboard_layout_view.setKeyboard(current_layout());
   }
 
   KeyboardData loadLayout(int layout_id)

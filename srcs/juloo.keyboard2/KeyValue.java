@@ -21,6 +21,10 @@ public final class KeyValue implements Comparable<KeyValue>
     SWITCH_FORWARD,
     SWITCH_BACKWARD,
     SWITCH_GREEKMATH,
+    SWITCH_UTILS,
+    SWITCH_UTILS_NUMPAD,
+    SWITCH_UTILS_SPECIAL,
+    SWITCH_UTILS_FKEYS,
     CAPS_LOCK,
     SWITCH_VOICE_TYPING,
     SWITCH_VOICE_TYPING_CHOOSER,
@@ -35,6 +39,7 @@ public final class KeyValue implements Comparable<KeyValue>
     GESTURE,
     CTRL,
     ALT,
+    ALTGR,
     META,
     DOUBLE_AIGU,
     DOT_ABOVE,
@@ -560,8 +565,9 @@ public final class KeyValue implements Comparable<KeyValue>
 
       /* Modifiers and dead-keys */
       case "shift": return SHIFT;
-      case "ctrl": return modifierKey("Ctrl", Modifier.CTRL, 0);
-      case "alt": return modifierKey("Alt", Modifier.ALT, 0);
+      case "ctrl": return modifierKey("Ctrl", Modifier.CTRL, FLAG_DOUBLE_TAP_LOCK);
+      case "alt": return modifierKey("Alt", Modifier.ALT, FLAG_DOUBLE_TAP_LOCK);
+      case "altgr": return modifierKey("AltGr", Modifier.ALTGR, FLAG_DOUBLE_TAP_LOCK);
       case "accent_aigu": return diacritic(0xE050, Modifier.AIGU);
       case "accent_caron": return diacritic(0xE051, Modifier.CARON);
       case "accent_cedille": return diacritic(0xE052, Modifier.CEDILLE);
@@ -589,7 +595,8 @@ public final class KeyValue implements Comparable<KeyValue>
       case "arrows": return modifierKey("Arr", Modifier.ARROWS, 0);
       case "box": return modifierKey("Box", Modifier.BOX, 0);
       case "fn": return modifierKey("Fn", Modifier.FN, 0);
-      case "meta": return modifierKey("Meta", Modifier.META, 0);
+      case "meta": return modifierKey("Meta", Modifier.META, FLAG_DOUBLE_TAP_LOCK);
+      case "win": return modifierKey("Win", Modifier.META, FLAG_DOUBLE_TAP_LOCK);
 
       /* Combining diacritics */
       /* Glyphs is the corresponding dead-key + 0x0100. */
@@ -642,6 +649,10 @@ public final class KeyValue implements Comparable<KeyValue>
       /* Special event keys */
       case "config": return CONFIG;
       case "switch_text": return eventKey("ABC", Event.SWITCH_TEXT, FLAG_SMALLER_FONT);
+      case "switch_utils": return eventKey("MODE", Event.SWITCH_UTILS, FLAG_SMALLER_FONT);
+      case "switch_utils_numpad": return eventKey("123", Event.SWITCH_UTILS_NUMPAD, FLAG_SMALLER_FONT);
+      case "switch_utils_special": return eventKey("NAV", Event.SWITCH_UTILS_SPECIAL, FLAG_SMALLER_FONT);
+      case "switch_utils_fkeys": return eventKey("FN", Event.SWITCH_UTILS_FKEYS, FLAG_SMALLER_FONT);
       case "switch_numeric": return eventKey("123+", Event.SWITCH_NUMERIC, FLAG_SMALLER_FONT);
       case "switch_emoji": return eventKey(0xE001, Event.SWITCH_EMOJI, FLAG_SMALLER_FONT);
       case "switch_back_emoji": return eventKey("ABC", Event.SWITCH_BACK_EMOJI, 0);

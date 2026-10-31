@@ -486,7 +486,7 @@ public final class Pointers implements Handler.Callback
         flags |= FLAG_P_CLEAR_LATCHED | FLAG_P_CANT_LOCK;
       flags |= FLAG_P_LATCHABLE;
     }
-    if (_config.double_tap_lock_shift &&
+    if (_config.double_tap_lock_modifiers &&
         kv.hasFlagsAny(KeyValue.FLAG_DOUBLE_TAP_LOCK))
       flags |= FLAG_P_DOUBLE_TAP_LOCK;
     return flags;
@@ -641,7 +641,8 @@ public final class Pointers implements Handler.Callback
       if (slider.isVertical()) {
         d += (y - last_y) * current_speed * direction_y * SPEED_VERTICAL_MULT;
       } else {
-        if (ptr.modifiers.has(KeyValue.Modifier.CTRL))
+        if (ptr.modifiers.has(KeyValue.Modifier.CTRL)
+            || ptr.modifiers.has(KeyValue.Modifier.ALTGR))
           current_speed *= SPEED_WORD_MULT;
         d += (x - last_x) * current_speed * direction_x;
       }
@@ -744,19 +745,33 @@ public final class Pointers implements Handler.Callback
       if (size > 1)
       {
         Arrays.sort(mods, 0, size);
+        boolean has_altgr = false;
+        for (int i = 0; i < size; i++)
+          if (is_modifier(mods[i], KeyValue.Modifier.ALTGR))
+            has_altgr = true;
         int j = 0;
         for (int i = 0; i < size; i++)
         {
           KeyValue m = mods[i];
-          if (m != null && (i + 1 >= size || m != mods[i + 1]))
-          {
-            mods[j] = m;
-            j++;
-          }
+          if (m == null)
+            continue;
+          if (has_altgr && (is_modifier(m, KeyValue.Modifier.CTRL)
+                || is_modifier(m, KeyValue.Modifier.ALT)))
+            continue;
+          if (i + 1 < size && m.sameKey(mods[i + 1]))
+            continue;
+          mods[j] = m;
+          j++;
         }
         size = j;
       }
       return new Modifiers(mods, size);
+    }
+
+    private static boolean is_modifier(KeyValue kv, KeyValue.Modifier mod)
+    {
+      return kv != null && kv.getKind() == KeyValue.Kind.Modifier
+        && kv.getModifier() == mod;
     }
 
     /** Returns modifiers that are in [m1_] but not in [m2_]. */

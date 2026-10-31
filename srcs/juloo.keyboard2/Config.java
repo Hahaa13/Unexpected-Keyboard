@@ -65,7 +65,7 @@ public final class Config
   public float customBorderLineWidth; // dp
   public int keyOpacity; // 0 - 255
   public int keyActivatedOpacity; // 0 - 255
-  public boolean double_tap_lock_shift;
+  public boolean double_tap_lock_modifiers;
   public float characterSize; // Ratio
   public int theme; // Values are R.style.*
   public boolean autocapitalisation;
@@ -186,7 +186,7 @@ public final class Config
     keyboard_rows_height_pixels = (int)(base_height * keyboardHeightPercent / 395);
     horizontal_margin =
       get_dip_pref_oriented(dm, "horizontal_margin", 3, 28);
-    double_tap_lock_shift = _prefs.getBoolean("lock_double_tap", false);
+    double_tap_lock_modifiers = true;
     characterSize =
       _prefs.getFloat("character_size", 1.15f)
       * characterSizeScale;

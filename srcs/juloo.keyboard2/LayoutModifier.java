@@ -11,6 +11,7 @@ public final class LayoutModifier
 {
   static Config globalConfig;
   static KeyboardData.Row bottom_row;
+  static KeyboardData.Row modifier_row;
   static KeyboardData.Row number_row_no_symbols;
   static KeyboardData.Row number_row_symbols;
   static KeyboardData num_pad;
@@ -31,9 +32,6 @@ public final class LayoutModifier
     // first iteration then automatically added.
     final TreeMap<KeyValue, KeyboardData.PreferredPos> extra_keys = new TreeMap<KeyValue, KeyboardData.PreferredPos>();
     final Set<KeyValue> remove_keys = new HashSet<KeyValue>();
-    // Make sure the config key is accessible to avoid being locked in a custom
-    // layout.
-    extra_keys.put(KeyValue.CONFIG, KeyboardData.PreferredPos.ANYWHERE);
     extra_keys.putAll(globalConfig.extra_keys_param);
     extra_keys.putAll(globalConfig.extra_keys_custom);
     // Number row and numpads are added after the modification pass to allow
@@ -90,6 +88,11 @@ public final class LayoutModifier
     if (added_number_row != null)
       kw = kw.insert_row(added_number_row, 0);
     return kw;
+  }
+
+  public static KeyboardData add_modifier_row(KeyboardData kw)
+  {
+    return kw.insert_row(modifier_row, 0);
   }
 
   /** Handle the numpad layout. The [main_kw] is used to adapt the numpad to
@@ -210,6 +213,7 @@ public final class LayoutModifier
       number_row_no_symbols = KeyboardData.load_row(res, R.xml.number_row_no_symbols);
       number_row_symbols = KeyboardData.load_row(res, R.xml.number_row);
       bottom_row = KeyboardData.load_row(res, R.xml.bottom_row);
+      modifier_row = KeyboardData.load_row(res, R.xml.modifier_row);
       num_pad = KeyboardData.load_num_pad(res);
       split_middle_column = KeyboardData.load_row(res, R.xml.split_middle_column);
     }

@@ -65,6 +65,7 @@ public final class KeyModifier
       case CTRL: return apply_ctrl(k);
       case ALT:
       case META: return turn_into_keyevent(k);
+      case ALTGR: return apply_ctrl(turn_into_keyevent(k));
       case FN: return apply_fn(k);
       case GESTURE: return apply_gesture(k);
       case SHIFT: return apply_shift(k);

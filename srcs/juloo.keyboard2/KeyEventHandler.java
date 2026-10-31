@@ -81,6 +81,7 @@ public final class KeyEventHandler
         {
           case CTRL:
           case ALT:
+          case ALTGR:
           case META:
             _autocap.stop();
             break;
@@ -217,6 +218,18 @@ public final class KeyEventHandler
             break;
           case ALT:
             sendMetaKey(KeyEvent.KEYCODE_ALT_LEFT, KeyEvent.META_ALT_LEFT_ON | KeyEvent.META_ALT_ON, down);
+            break;
+          case ALTGR:
+            if (down)
+            {
+              sendMetaKey(KeyEvent.KEYCODE_CTRL_LEFT, KeyEvent.META_CTRL_LEFT_ON | KeyEvent.META_CTRL_ON, true);
+              sendMetaKey(KeyEvent.KEYCODE_ALT_LEFT, KeyEvent.META_ALT_LEFT_ON | KeyEvent.META_ALT_ON, true);
+            }
+            else
+            {
+              sendMetaKey(KeyEvent.KEYCODE_ALT_LEFT, KeyEvent.META_ALT_LEFT_ON | KeyEvent.META_ALT_ON, false);
+              sendMetaKey(KeyEvent.KEYCODE_CTRL_LEFT, KeyEvent.META_CTRL_LEFT_ON | KeyEvent.META_CTRL_ON, false);
+            }
             break;
           case SHIFT:
             sendMetaKey(KeyEvent.KEYCODE_SHIFT_LEFT, KeyEvent.META_SHIFT_LEFT_ON | KeyEvent.META_SHIFT_ON, down);
