@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
-import juloo.keyboard2.dict.DictionariesActivity;
 import juloo.keyboard2.R;
 
 public class LauncherActivity extends Activity implements Handler.Callback
@@ -96,11 +95,6 @@ public class LauncherActivity extends Activity implements Handler.Callback
     InputMethodManager imm =
       (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
     imm.showInputMethodPicker();
-  }
-
-  public void launch_dictionaries_activity(View v)
-  {
-    startActivity(new Intent(this, DictionariesActivity.class));
   }
 
   Animatable find_anim(int id)

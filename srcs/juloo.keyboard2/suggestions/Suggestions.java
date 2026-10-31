@@ -33,7 +33,8 @@ public final class Suggestions
 
   public void started()
   {
-    _enabled = _config.editor_config.should_show_candidates_view;
+    _enabled = _config.suggestions_enabled
+      && _config.editor_config.should_show_candidates_view;
     clear();
   }
 
