@@ -3,8 +3,8 @@
   <row>
     <key width="2" role="action" key0="esc"/>
     <key width="2" role="action" key0="tab"/>
-    <key width="2" role="action" key0="up"/>
     <key width="2" role="action" key0="home"/>
+    <key width="2" role="action" key0="up"/>
     <key width="2" role="action" key0="end"/>
   </row>
   <row>

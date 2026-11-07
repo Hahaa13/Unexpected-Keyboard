@@ -596,7 +596,7 @@ public final class KeyValue implements Comparable<KeyValue>
       case "box": return modifierKey("Box", Modifier.BOX, 0);
       case "fn": return modifierKey("Fn", Modifier.FN, 0);
       case "meta": return modifierKey("Meta", Modifier.META, FLAG_DOUBLE_TAP_LOCK);
-      case "win": return modifierKey("Win", Modifier.META, FLAG_DOUBLE_TAP_LOCK);
+      case "win": return modifierKey("\u2318", Modifier.META, FLAG_DOUBLE_TAP_LOCK);
 
       /* Combining diacritics */
       /* Glyphs is the corresponding dead-key + 0x0100. */

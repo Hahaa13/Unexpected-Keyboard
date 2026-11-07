@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <row height="0.85">
-  <key width="1" role="action" key0="win"/>
-  <key width="1" role="action" key0="shift"/>
-  <key width="1" role="action" key0="ctrl"/>
-  <key width="1" role="action" key0="alt"/>
-  <key width="1.2" role="action" key0="altgr"/>
-  <key width="1.2" role="action" key0="delete"/>
-  <key width="1" role="action" key0="esc"/>
-  <key width="1" role="action" key0="tab"/>
-  <key width="1.6" role="action" key0="switch_utils"/>
+  <key width="1.25" role="action" key0="win"/>
+  <key width="1.25" role="action" key0="shift"/>
+  <key width="1.25" role="action" key0="ctrl"/>
+  <key width="1.25" role="action" key0="alt"/>
+  <key width="1.25" role="action" key0="altgr"/>
+  <key width="1.25" role="action" key0="esc"/>
+  <key width="1.25" role="action" key0="tab"/>
+  <key width="1.25" role="action" key0="switch_utils"/>
 </row>

@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Adapted from standard TCVN 6064-->
 <keyboard name="My Keyboard" script="latin" bottom_row="false" locale_extra_keys="false">
   <row>
-    <key c="q" ne="1"/>
-    <key c="w" nw="~" ne="2" sw="\@"/>
-    <key c="e" nw="!" ne="3" sw="\#"/>
-    <key c="r" ne="4" sw="$"/>
-    <key c="t" ne="5" sw="%"/>
-    <key c="y" ne="6" sw="^"/>
-    <key c="u" ne="7" sw="&amp;"/>
-    <key c="i" ne="8" sw="*"/>
-    <key c="o" ne="9" sw="("/>
-    <key c="p" ne="0" sw=")"/>
+    <key key0="q" key1="~" key2="1" key3="`" key4="loc esc"/>
+    <key key0="w" key1="accent_horn" key2="2" key3="\@"/>
+    <key key0="e" key1="!" key2="3" key3="\#" key4="ê"/>
+    <key key0="r" key2="4" key3="$" key1="accent_hook_above"/>
+    <key key0="t" key2="5" key3="%"/>
+    <key key0="y" key2="6" key3="^"/>
+    <key key0="u" key2="7" key3="&amp;" key4="ư"/>
+    <key key0="i" key2="8" key3="*"/>
+    <key key0="o" key1="ô" key2="9" key3="(" key4="ơ"/>
+    <key key0="p" key2="0" key3=")"/>
   </row>
   <row>
-    <key shift="0.5" c="a" ne="`"/>
-    <key c="s"/>
-    <key c="d"/>
-    <key c="f"/>
-    <key c="g" ne="-" sw="_"/>
-    <key c="h" ne="=" sw="+"/>
-    <key c="j" se="}" sw="{"/>
-    <key c="k" sw="[" se="]"/>
-    <key c="l" ne="|" sw="\\"/>
+    <key shift="0.5" key0="a" key1="loc tab" key2="ă" key3="â"/>
+    <key key0="s" key1="accent_aigu" key2="loc §"/>
+    <key key0="d" key1="accent_bar" key2="₫" key3="đ"/>
+    <key key0="f" key1="accent_grave"/>
+    <key key0="g" key2="-" key3="_"/>
+    <key key0="h" key2="=" key3="+"/>
+    <key key0="j" key1="accent_dot_below" key3="{" key4="}"/>
+    <key key0="k" key3="[" key4="]"/>
+    <key key0="l" key2="|" key3="\\"/>
   </row>
   <row>
-    <key width="1.5" role="action" c="shift"/>
-    <key c="z"/>
-    <key c="x"/>
-    <key c="c" ne="&lt;" sw="."/>
-    <key c="v" ne="&gt;" sw=","/>
-    <key c="b" ne="\?" sw="/"/>
-    <key c="n" ne=":" sw=";"/>
-    <key c="m" ne="&quot;" sw="'"/>
-    <key width="1.5" role="action" c="backspace"/>
+    <key width="1.5" role="action" key0="shift" key2="loc capslock"/>
+    <key key0="z"/>
+    <key key0="x" key1="accent_tilde" key2="loc †"/>
+    <key key0="c" key2="&lt;" key3="."/>
+    <key key0="v" key2="&gt;" key3=","/>
+    <key key0="b" key2="\?" key3="/"/>
+    <key key0="n" key2=":" key3=";"/>
+    <key key0="m" key2="&quot;" key3="'"/>
+    <key width="1.5" role="action" key0="backspace" key2="delete"/>
+  </row>
+  <row height="0.95">
+    <key width="1.5" role="action" key0="change_method" key3="config"/>
+    <key width="1.5" role="action" key0="switch_emoji"/>
+    <key width="4" role="space_bar" key0="space" key5="cursor_left" key6="cursor_right"/>
+    <key width="3" role="action" key0="enter" key2="action"/>
   </row>
 </keyboard>
