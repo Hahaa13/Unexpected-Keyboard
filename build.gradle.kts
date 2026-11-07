@@ -20,8 +20,8 @@ android {
     applicationId = "dev.keyboard.my"
     minSdk = 28
     targetSdk { version = release(36) }
-    versionCode = 56
-    versionName = "2.1.0"
+    versionCode = 57
+    versionName = "2.2.0"
   }
 
   sourceSets {
