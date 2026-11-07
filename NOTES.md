@@ -22,18 +22,38 @@ Fork này biến Unexpected Keyboard thành bàn phím tối ưu cho Termux trê
 - Không thêm thư viện, không hard-code màu; dùng theme hiện có.
 - Chỉ commit local, không push và không dùng GitHub Actions.
 
-## Kiến trúc dự kiến
+## Kiến trúc đã triển khai
 
 - `LayoutModifier` nạp `modifier_row.xml` và chèn hàng này vào mọi layout đang
-  hiển thị.
-- `Keyboard2` bỏ qua layout picker, dùng `my_keyboard_text.xml`; các mode utils
-  được mở qua event `SWITCH_UTILS_*`.
-- `KeyValue` thêm modifier `ALTGR`, key `win` và event utils.
+  hiển thị; key `CONFIG` tự động bị loại bỏ trong `modify_layout`.
+- `Keyboard2` bỏ qua layout picker, luôn dùng `my_keyboard_text.xml`; event
+  `SWITCH_UTILS`, `SWITCH_UTILS_NUMPAD`, `SWITCH_UTILS_SPECIAL`,
+  `SWITCH_UTILS_FKEYS` điều khiển các trang utils.
+- `KeyValue` có modifier `ALTGR`, key `win`, và các event utils.
 - `Pointers` chuẩn hóa Ctrl/Alt khi AltGr đang bật, tránh gửi trùng meta state.
-- `KeyEventHandler` gửi Ctrl và Alt cho AltGr; `Keyboard2View` vẽ gạch dưới cho
-  modifier đang latch/lock.
+- `KeyEventHandler` gửi Ctrl rồi Alt khi AltGr được giữ; `Keyboard2View` vẽ gạch
+  dưới cho modifier đang latch/lock.
 - Layout đặt trực tiếp trong `res/xml`; không sửa `srcs/layouts` để tránh ảnh
   hưởng `gen_layouts.py` và `check_layout.py`.
+- Trang utils: `my_keyboard_utils_numpad.xml`,
+  `my_keyboard_utils_special.xml`, `my_keyboard_utils_fkeys.xml`; thêm
+  `my_keyboard_utils_numpad_landscape.xml` để F1-F12 nằm cạnh numpad khi xoay
+  ngang.
+- Settings chỉ còn Theme, Keyboard height và Vibration; nút dictionaries trong
+  launcher đã bị bỏ.
+- `applicationId = dev.keyboard.my`, tên ứng dụng là My Keyboard; namespace/package
+  Java vẫn là `juloo.keyboard2`.
+
+## Trạng thái các commit local
+
+Nhánh `my-keyboard`, không push và không dùng CI:
+
+- `fc670cc9` — tăng `minSdk` lên 28, tạo `NOTES.md`.
+- `59c16172` — thêm modifier row cố định, AltGr và gạch dưới latch/lock.
+- `51c72ad4` — dùng layout terminal `my_keyboard_text.xml`.
+- `4194f500` — thêm các trang utils và chuyển trang bằng phím Mode.
+- `ff395721` — rút gọn settings, tắt suggestions.
+- `6eceb176` — đổi nhận diện ứng dụng thành My Keyboard.
 
 ## API 28 audit
 
