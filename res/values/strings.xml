@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_release">Unexpected Keyboard</string>
-    <string name="app_name_debug">Unexpected Keyboard (Debug)</string>
-    <string name="short_description">Lightweight and privacy-conscious virtual keyboard for Android.</string>
-    <string name="store_description">The main feature is that you can type more characters by swiping the keys towards the corners.\n\nThis application was originally designed for programmers using Termux.\nNow perfect for everyday use.\n\nThis application contains no ads and is Open Source.</string>
+    <string name="app_name_release">My Keyboard</string>
+    <string name="app_name_debug">My Keyboard (Debug)</string>
+    <string name="short_description">Terminal-focused virtual keyboard for Android 9 and later.</string>
+    <string name="store_description">My Keyboard is a terminal-focused fork of Unexpected Keyboard, optimized for Termux and Android 9 or later.\n\nIt provides a fixed modifier row, AltGr, Esc, Tab, and dedicated utility pages for navigation, function keys, and numeric input.\n\nThis application contains no ads and is Open Source.</string>
     <string name="pref_portrait">In portrait mode</string>
     <string name="pref_portrait_unfolded">In portrait mode unfolded</string>
     <string name="pref_landscape">In landscape mode</string>
@@ -115,8 +115,8 @@
     <string name="launcher_button_imesettings">Enable keyboard</string>
     <string name="launcher_button_imepicker">Select keyboard</string>
     <string name="launcher_button_dictionaries">Install dictionaries</string>
-    <string name="launcher_description">This application is a virtual keyboard. Go to the system settings by clicking on the button below and enable Unexpected-Keyboard.</string>
-    <string name="launcher_sourcecode">This is a free and open source application. You can find the source code or report bugs on GitHub.</string>
+    <string name="launcher_description">My Keyboard is a terminal-focused virtual keyboard. Go to the system settings by clicking on the button below and enable My Keyboard.</string>
+    <string name="launcher_sourcecode">My Keyboard is a free and open source fork of Unexpected Keyboard, licensed under GPL-3.0. The original project is available on GitHub.</string>
     <string name="launcher_tryhere">After enabling, you can try the keyboard here:</string>
     <string name="launcher_tryhere_hint">Try here</string>
     <string name="key_descr_capslock">Caps lock</string>

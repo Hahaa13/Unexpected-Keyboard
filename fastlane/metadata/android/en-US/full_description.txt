@@ -1,6 +1,5 @@
-The main feature is that you can type more characters by swiping the keys towards the corners.
+My Keyboard is a terminal-focused fork of Unexpected Keyboard, optimized for Termux and Android 9 or later.
 
-This application was originally designed for programmers using Termux.
-Now perfect for everyday use.
+It provides a fixed modifier row with Win, Shift, Ctrl, Alt, AltGr, Delete, Esc, Tab, and utility pages for navigation, function keys, and numeric input.
 
 This application contains no ads and is Open Source.
